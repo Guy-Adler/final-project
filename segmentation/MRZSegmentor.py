@@ -1,6 +1,6 @@
 import cv2
 from .LineSegmentor import LineSegmentor, Array, BoundingBox, sort_contours
-from utils import resize_image
+from utils import resize_image, show_images
 
 
 class MRZSegmentor(LineSegmentor):
@@ -30,7 +30,7 @@ class MRZSegmentor(LineSegmentor):
         # perform another closing operation, this time using the square kernel to close gaps between lines of the MRZ
         self.thresh = cv2.morphologyEx(self.thresh, cv2.MORPH_CLOSE, self.square_kernel)
         # perform a series of erosions to break apart connected components
-        self.thresh = cv2.erode(self.thresh, None, iterations=4)
+        self.thresh = cv2.erode(self.thresh, None)
         super().post_transformations()
 
     def sort_contours(self):

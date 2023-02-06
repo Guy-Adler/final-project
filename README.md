@@ -17,3 +17,8 @@ This should make it pretty easy to train an OCR on each line, returning a string
 
 ### Parsing the MRZ
 [The Specification](https://www.icao.int/publications/Documents/9303_p3_cons_en.pdf)
+
+
+# Data Collection
+- MIDV500 (38.9GB downloaded -> 2.37GB used)
+- [PRADO](https://www.consilium.europa.eu/prado/en/search-by-document-title.html#letter1) has 2949 documents from all over the world. 

@@ -10,7 +10,12 @@ class LineSegmentor(Segmentor):
         self.remove_border_pixels()
 
     def sort_contours(self):
-        self.contours = sort_contours(self.contours, 'ttb')
+        # Sort the contours by area:
+        contours = sort_contours(self.contours, 'area')
+        # Get the 2 largest ones (there are exactly 2 lines in an MRZ)
+        contours = contours[:2]
+        # Sort the contours from topmost to bottommost
+        self.contours = sort_contours(contours, 'ttb')
 
     def is_roi(self, bounding_rect: BoundingBox):
         # Calculate the aspect ratio and coverage ratio of the ROI

@@ -69,18 +69,10 @@ def resize_image(image: Array, width: int | None = None, height: int | None = No
 
 
 def get_images_by_path(path):
-    # return the set of files that are valid
-    # loop over the directory structure
-    for (rootDir, dirNames, filenames) in os.walk(path):
-        # loop over the filenames in the current directory
-        for filename in filenames:
-            # determine the file extension of the current file
-            ext = filename[filename.rfind("."):].lower()
-
-            # check to see if the file is an image and should be processed
-            if ext.endswith((".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff")):
-                # construct the path to the image and yield it
-                yield cv2.imread(os.path.join(rootDir, filename))
+    for root, dirs, files in os.walk(path):
+        for curfile in files:
+            if os.path.splitext(os.path.join(root, curfile))[1] in (".jpg", ".jpeg", ".png", ".bmp", ".tif", ".tiff"):
+                yield cv2.imread(os.path.join(root, curfile))
 
 
 def get_image_by_path(path):
