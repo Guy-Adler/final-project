@@ -1,0 +1,4 @@
+resources/data/*/
+resources/example_passports/
+resources/test/
+.idea/
